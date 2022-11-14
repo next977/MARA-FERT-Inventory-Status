@@ -1,0 +1,140 @@
+<mvc:View controllerName="SYNC.zcdmmim4000.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	height="100%"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:common='sap.suite.ui.commons'>
+    <f:DynamicPage 
+			id="D_dynamicPage"
+			showFooter="true">
+			
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<!-- <Title text="원자재/완제품 재고 현황"/> -->
+					</f:heading>
+					<f:actions>
+					</f:actions>
+					<f:navigationActions>
+						<Button 
+							icon="{app>/screenSizeButton}"
+							type="Transparent"
+							tooltip="{i18n>main.button.fullscreen}"
+							press="onResizeScreenPress"/>
+					</f:navigationActions>
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+                <l:ResponsiveFlowLayout id="resFlow">
+                    <l:content>
+                        <l:VerticalLayout id="verLay" width="70%">
+                            <l:layoutData>
+                                <l:ResponsiveFlowLayoutData id="resFlowDat" minWidth="500" margin="false" />
+                            </l:layoutData>
+                            <l:content>
+                                <SegmentedButton 
+                                    items="{DynamicType>/typeList}"
+                                    selectedKey="{DynamicType>/selectedType}"
+                                    selectionChange="onTypeChange">
+                                    <items>
+                                        <SegmentedButtonItem
+                                            key="{DynamicType>type}"
+                                            text="{DynamicType>type}" 
+                                            tooltip="{DynamicType>type}"
+                                            width = "70%" />
+                                    </items>
+                                </SegmentedButton>
+                            </l:content>
+                        </l:VerticalLayout>
+                        <l:VerticalLayout id="verLay2" width="50%">
+                            <l:layoutData>
+                                <l:ResponsiveFlowLayoutData id="resFlowDat2" minWidth="500" margin="false" />
+                            </l:layoutData>
+                            <l:content>
+                                    <VBox>
+                                        <!-- <Label id="startDateLabel" text="기간 입력:" labelFor="startDateEvent" textAlign = "Right"/>
+                                        <DatePicker id="startDatePicker" width="100%" placeholder="년-월" valueFormat="MM"  
+                                                    displayFormat="yyyy-MM" change="onDatePickerChange" class="sapUiSmallMarginBottom" /> -->
+                                    </VBox>                                                      
+                            </l:content>
+                        </l:VerticalLayout>
+                        <l:VerticalLayout id="verLay3" width="20%">
+        
+                        </l:VerticalLayout>
+                    </l:content>
+                </l:ResponsiveFlowLayout>
+                
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<!-- DynamicPage Content -->
+			<f:content>
+                    <common:ChartContainer
+                        id="idChartContainer"
+                        showFullScreen="true"
+                        showPersonalization="true"
+                        autoAdjustHeight="false"
+                        title="재고 현황">
+                        <common:content>
+                            <common:ChartContainerContent
+                                icon="sap-icon://bar-chart"
+                                title="Bar Chart">
+                                <common:content>
+                                    <core:Fragment id="DynamicTypeChart" fragmentName="SYNC.zcdmmim4000.view.fragment.chart" type="XML" />
+                                </common:content>
+                            </common:ChartContainerContent>
+                            <common:ChartContainerContent
+                                icon="sap-icon://table-view"
+                                title="Table">
+                                <common:content>
+                                    <Table id="idTable" width="100%"></Table>
+                                </common:content>
+                            </common:ChartContainerContent>
+                            
+                            <common:ChartContainerContent
+                                icon="sap-icon://table-view"
+                                title="Table">
+                                <common:content>
+                                    <l:Grid containerQuery="true">
+                                        <VBox>
+                                            <core:Fragment id="DynamicTypeChart_multi" fragmentName="SYNC.zcdmmim4000.view.fragment.chart2" type="XML" />
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M12 S12" />
+                                            </layoutData>
+                                        </VBox>
+                                        <VBox>
+                                            <Table id="idTable_multi" width="100%"></Table>
+                                            <layoutData>
+                                                <l:GridData span="XL6 L6 M12 S12" />
+                                            </layoutData>
+                                        </VBox>
+                                    </l:Grid>
+                                    <!-- <Text text= "11"></Text> -->
+                                </common:content>
+                            </common:ChartContainerContent> 
+                        </common:content>
+                    </common:ChartContainer>
+
+				<!-- Chart Fragment 추가 -->
+					
+			</f:content>
+
+			<!-- DynamicPage Footer -->
+			<!-- <f:footer>
+				<OverflowToolbar>
+					<Button 
+						type="Back"
+						text="이전" 
+						press="onNavBackPress"/>
+					<ToolbarSpacer/>
+					
+				</OverflowToolbar>
+			</f:footer> -->
+		</f:DynamicPage>
+</mvc:View>

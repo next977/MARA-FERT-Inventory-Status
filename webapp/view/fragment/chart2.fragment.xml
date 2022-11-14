@@ -1,0 +1,23 @@
+<c:FragmentDefinition
+	xmlns:m="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz="sap.viz.ui5.controls"
+	xmlns:c="sap.ui.core">
+    <!-- 
+        차트의 사이즈를 조절할때 minFlexSize로 조절하면된다.
+        혹은 VizFrame Control의 width, heigth로 조절.
+    -->
+    <l:FixFlex id='chartFixFlex2' minFlexSize="300">
+        <l:flexContent>
+            <viz:VizFrame 
+                id="staticChart_multi" 
+                uiConfig="{applicationSet:'fiori'}"
+                 
+                width="100%"
+                >
+            </viz:VizFrame>
+        </l:flexContent>
+    </l:FixFlex>
+</c:FragmentDefinition>
